@@ -90,8 +90,32 @@ public class Server extends Computer {
 
 }
 ```
-### And same functionalities and abstraction are used for Mobile and Memory classes
+### Same functionalities and abstraction are used for Mobile and Memory classes
 
+## Factory class
+
+```java
+public class ComputerFactory {
+
+    public static Computer getComputer(String type, String ram, String hdd, String cpu){
+        if("PC".equalsIgnoreCase(type)) return new PC(ram, hdd, cpu);
+        else if("Server".equalsIgnoreCase(type)) return new Server(ram, hdd, cpu);
+
+        return null;
+    }
+}
+```
+
+## Client class
+
+```java
+ Computer pc = ComputerFactory.getComputer("pc","2 GB","500 GB","2.4 GHz");
+ Computer server = ComputerFactory.getComputer("server","16 GB","1 TB","2.9 GHz");
+
+ System.out.println("Factory PC Config::"+pc);
+ System.out.println("Factory Server Config::"+server);
+}
+```
 
 ## Conclusions
 I learned how design patterns make software development easier by providing a toolbox of solutions to common problems you encounter in object-oriented design.
